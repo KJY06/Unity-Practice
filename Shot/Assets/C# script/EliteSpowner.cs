@@ -1,15 +1,12 @@
-
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using UnityEngine;
-
-public class Spowner : MonoBehaviour
+public class EliteSpowner : MonoBehaviour
 {
     private Transform target;
     public GameObject enemy;
-    private float realTime, randomx, randomy;
+    private float realTime;
     [SerializeField] private float MaxTime;
-
     private void Start()
     {
         realTime = 0;
@@ -34,7 +31,9 @@ public class Spowner : MonoBehaviour
             3 => new Vector2(target.position.x + Random.Range(-9.5f, 9.5f), target.position.y - 5),
             _ => Vector2.zero,
         };
-
         Instantiate(enemy, vector3, quaternion.identity);
     }
+
+
+
 }

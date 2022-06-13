@@ -8,6 +8,8 @@ TagManager:
   - sns
   - bullet
   - Monster
+  - Heal
+  - Boss
   layers:
   - Default
   - TransparentFX

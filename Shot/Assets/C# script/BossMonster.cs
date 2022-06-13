@@ -1,19 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class Monster : MonoBehaviour
+public class BossMonster : MonoBehaviour
 {
     private Transform target;
     [SerializeField] private float speed;
     public Vector2 direction;
-
-    // Update is called once per frame
+    [SerializeField] private float hp = 7;
     void Update()
     {
         MoveToTarget();
     }
-
     public void MoveToTarget()
     {
         target = GameObject.Find("player").transform;
@@ -21,15 +16,18 @@ public class Monster : MonoBehaviour
         direction.Normalize();
         transform.Translate(new Vector3(target.position.x + direction.x, target.position.y + direction.y) * speed * Time.deltaTime);
     }
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("bullet"))
         {
+            hp -= 1;
             Destroy(collision.gameObject);
-            Destroy(gameObject);
-            Point point = FindObjectOfType<Point>();
-            point.point += 1;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+                Point point = FindObjectOfType<Point>();
+                point.point += 10;
+            }
         }
         if (collision.CompareTag("Player"))
         {

@@ -1,15 +1,13 @@
-
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-public class Spowner : MonoBehaviour
+public class HealSpowner : MonoBehaviour
 {
     private Transform target;
-    public GameObject enemy;
-    private float realTime, randomx, randomy;
+    public GameObject Heal;
+    private float realTime;
     [SerializeField] private float MaxTime;
-
     private void Start()
     {
         realTime = 0;
@@ -28,13 +26,12 @@ public class Spowner : MonoBehaviour
         target = GameObject.Find("player").transform;
         var vector3 = (Random.Range(0, 4)) switch
         {
-            0 => new Vector2(target.position.x + 9.5f, target.position.y + Random.Range(-5.5f, 5.5f)),
-            1 => new Vector2(target.position.x - 9.5f, target.position.y + Random.Range(-5.5f, 5.5f)),
-            2 => new Vector2(target.position.x + Random.Range(-9.5f, 9.5f), target.position.y + 5),
-            3 => new Vector2(target.position.x + Random.Range(-9.5f, 9.5f), target.position.y - 5),
+            0 => new Vector2(target.position.x + 7f, target.position.y + Random.Range(-4f, 4f)),
+            1 => new Vector2(target.position.x - 7f, target.position.y + Random.Range(-4f, 4f)),
+            2 => new Vector2(target.position.x + Random.Range(-7f, 7f), target.position.y + 4),
+            3 => new Vector2(target.position.x + Random.Range(-7f, 7f), target.position.y - 4),
             _ => Vector2.zero,
         };
-
-        Instantiate(enemy, vector3, quaternion.identity);
+        Instantiate(Heal, vector3, quaternion.identity);
     }
 }

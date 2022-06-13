@@ -14,4 +14,16 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Heal"))
+        {
+            Player player = FindObjectOfType<Player>();
+            player.hp += 1;
+            player.Hp.text = $"Hp : {player.hp}";
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }
