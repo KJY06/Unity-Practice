@@ -6,6 +6,7 @@ public class BossSpowner : MonoBehaviour
     private Transform target;
     public GameObject enemy;
     public bool forspon = false;
+    public int bosscnt = 0;
     void Update()
     {
         Spon();
@@ -19,8 +20,9 @@ public class BossSpowner : MonoBehaviour
     void RandomSelect()
     {
 
-        if(forspon == true)
+        if(forspon == true && bosscnt == 0)
         {
+            bosscnt++;
             forspon = false;
             target = GameObject.Find("player").transform;
             var vector3 = (Random.Range(0, 4)) switch
@@ -32,7 +34,6 @@ public class BossSpowner : MonoBehaviour
                 _ => Vector2.zero,
             };
             Instantiate(enemy, vector3, quaternion.identity);
-
         }
     }
 }

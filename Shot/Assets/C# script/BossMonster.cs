@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 public class BossMonster : MonoBehaviour
 {
     private Transform target;
     [SerializeField] private float speed;
     public Vector2 direction;
-    [SerializeField] private float hp = 7;
+    [SerializeField] private float monsterhp = 7;
+
     void Update()
     {
         MoveToTarget();
@@ -20,13 +22,11 @@ public class BossMonster : MonoBehaviour
     {
         if (collision.CompareTag("bullet"))
         {
-            hp -= 1;
+            monsterhp -= 1;
             Destroy(collision.gameObject);
-            if (hp <= 0)
+            if (monsterhp <= 0)
             {
                 Destroy(gameObject);
-                Point point = FindObjectOfType<Point>();
-                point.point += 10;
             }
         }
         if (collision.CompareTag("Player"))

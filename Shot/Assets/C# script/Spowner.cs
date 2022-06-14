@@ -8,7 +8,7 @@ public class Spowner : MonoBehaviour
     private Transform target;
     public GameObject enemy;
     private float realTime, randomx, randomy;
-    [SerializeField] private float MaxTime;
+    public float MaxTime;
 
     private void Start()
     {

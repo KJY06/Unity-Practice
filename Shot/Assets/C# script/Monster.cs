@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour
             Destroy(gameObject);
             Point point = FindObjectOfType<Point>();
             point.point += 1;
+            point.pointcnt = 0;
         }
         if (collision.CompareTag("Player"))
         {
