@@ -5,20 +5,22 @@ public class Wave : MonoBehaviour
 {
     public int wave;
     [SerializeField] private Text Waave;
-    public int wavecnt = 1;
-    [SerializeField] private Point point = FindObjectOfType<Point>();
+    public int wavecnt = 0;
+    private int currentwave;
     void Start()
     {
-        wave = 1;
+        wave = 0;
         Waave.text = $"Wave : {wave}";
+        currentwave = wave;
     }
     void Update()
     {
-        if(point.point % 100 >= 0 && point.point != 0 && wavecnt == 0)
+       if (currentwave != wave)
         {
-            wavecnt++;
-            wave++;
-            Waave.text = $"Wave : {wave}";
+            currentwave = wave;
+            Spowner spon = FindObjectOfType<Spowner>();
+            spon.MaxTime -= 0.05f;
         }
+        Waave.text = $"Wave : {wave}";
     }
 }

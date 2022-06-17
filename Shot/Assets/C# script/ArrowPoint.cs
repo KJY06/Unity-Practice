@@ -16,7 +16,7 @@ public class ArrowPoint : MonoBehaviour
     }
     void shoot()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.S))
         {
             Instantiate(bulletprefab, transform.position, transform.rotation);
         }

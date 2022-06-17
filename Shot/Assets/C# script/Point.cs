@@ -10,6 +10,7 @@ public class Point : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         point = 0;
         Pooint.text = $"Point : {point}";
     }

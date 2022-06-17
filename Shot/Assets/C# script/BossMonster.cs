@@ -26,6 +26,13 @@ public class BossMonster : MonoBehaviour
             Destroy(collision.gameObject);
             if (monsterhp <= 0)
             {
+                Wave wavve = FindObjectOfType<Wave>();
+                wavve.wave++;
+                Point ppoint = FindObjectOfType<Point>();
+                ppoint.point += 10;
+            }
+            if (monsterhp <= 0)
+            {
                 Destroy(gameObject);
             }
         }
