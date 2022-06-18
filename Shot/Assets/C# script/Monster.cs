@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    private Transform target;
+    public Transform target;
     [SerializeField] private float speed;
     public Vector2 direction;
+    public int rotateSpeed;
+    private void Start()
+    {
+        target = GameObject.Find("player").transform;
+        direction = target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion angleAxis = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+        Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, rotateSpeed * Time.deltaTime);
+        transform.rotation = rotation;
+    }
 
     // Update is called once per frame
     void Update()
     {
         MoveToTarget();
+        
     }
 
     public void MoveToTarget()
     {
-        target = GameObject.Find("player").transform;
+
         direction = target.position - transform.position;
         direction.Normalize();
         transform.Translate(new Vector3(target.position.x + direction.x, target.position.y + direction.y) * speed * Time.deltaTime);
