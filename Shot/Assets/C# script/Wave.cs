@@ -19,7 +19,9 @@ public class Wave : MonoBehaviour
         {
             currentwave = wave;
             Spowner spon = FindObjectOfType<Spowner>();
-            spon.MaxTime -= 0.05f;
+            spon.MaxTime -= 0.1f;
+            EliteSpowner spon2 = FindObjectOfType<EliteSpowner>();
+            spon2.MaxTime -= 0.1f;
         }
         Waave.text = $"Wave : {wave}";
     }

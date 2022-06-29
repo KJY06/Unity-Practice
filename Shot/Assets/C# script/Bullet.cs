@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -19,9 +17,9 @@ public class Bullet : MonoBehaviour
     {
         if(collision.CompareTag("Heal"))
         {
-            Player player = FindObjectOfType<Player>();
-            player.hp += 1;
-            player.Hp.text = $"Hp : {player.hp}";
+            Wall wall = FindObjectOfType<Wall>();
+            wall.hp += 1;
+            wall.Hp.text = $"Hp : {wall.hp}";
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
